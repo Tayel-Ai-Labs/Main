@@ -1,9 +1,15 @@
 # Tayel DS — v1.0
 
-Transcribed from the Figma file "Tayel DS", 19 of 30 pages captured
-(`tayel-ds-screenshots/`). Everything here was read off those captures. Where a
-value was not printed in the capture it is marked **unknown** rather than
-guessed — ask Figma for it before using it.
+Transcribed from the Figma file "Tayel DS" — first from 19 page captures, then
+completed against the full 30-page PDF export (`docs/Tayel-DS.pdf`, supplied
+2026-10-16). Everything here was read off those pages. Where a value was not
+printed anywhere it is marked **unknown** rather than guessed — ask Figma for it
+before using it.
+
+The PDF is 2 pages of front matter + 28 content pages. It does **not** close the
+navigation gap: its page 20 is titled "Navigation Bar" and shows the Tooltip
+frame again, the same mis-export as the screenshot. Auth Screens and Dashboard,
+listed in the capture README, are not in the PDF at all.
 
 Scope note: the cover page is labelled "Startup DS v1.0", so this started from a
 generic startup kit. The palette and type below are what the file actually
@@ -288,13 +294,68 @@ rest flat. Three sizes and left/centre/right alignment, shown at 4, 5 and 6
 items.
 
 ### Navigation — 10 components (Sidebar ×2 / TopNav ×4 / Mobile ×4)
-**Not captured.** `18-navigation-bar.jpg` is a duplicate of the tooltip page —
-the export is wrong. Re-capture it; the top nav is the first thing the site
-needs.
+**Still not captured.** Both the screenshot and the PDF put the Tooltip frame
+under the "Navigation Bar" heading. The top nav is the first thing any page
+needs, so this is the one gap that actually blocks work.
 
-### Still missing from the file (11 pages)
-Breadcrumb · Pagination · Table · Progress bar · Spinner · Skeleton · Form ·
-Auth screens · Dashboard · Empty states · Icons.
+### Breadcrumb — 12 variants (3 separators × 3 sizes × with/without home icon)
+Separators: `/`, `>`, `·`. Links are Secondary blue, the current (last) crumb is
+neutral ink and not a link. Optional leading home icon. Three sizes track
+Body/sm, Body/md, Body/lg.
+
+### Pagination — 8 variants (Default / Simple × sizes)
+**Default**: prev chevron, numbered squares with `…` truncation, next chevron.
+The active page is a filled indigo square with white text; the rest are white
+with a hairline. Disabled chevrons go grey at the first and last page. Shown
+truncating at the start, middle and end of a 10-page range, and un-truncated at
+5 pages.
+**Simple**: prev chevron · "Page 5 of 10" · next chevron.
+
+### Table — 6 variants (Striped / Bordered / Compact / Checkbox)
+Four independent booleans, shown in combination. Anatomy: header row with a
+sort glyph on every sortable column, then rows of avatar + name, email, role, a
+status Badge, and an actions cell (edit / delete icon buttons). The checkbox
+variant adds a select column with a header select-all.
+
+### Progress Bar — 9 variants (4 sizes × 4 colours + value states)
+Track is neutral, fill is a `radius/full` bar. Colours: Primary, Success,
+Warning, Error. Label sits left, percentage right, both Label/md. Shown at 0,
+25, 50, 75 and 100% — at 0% the fill collapses to a dot rather than vanishing.
+
+### Spinner — 38 variants (Ring / Dots / Pulse × sizes × colours)
+**Ring**: an arc on a light track, 5 sizes, in indigo, blue, purple and neutral
+— the arc is a gradient, not a flat stroke. **Dots**: three dots at staggered
+opacity. **Pulse**: one filled circle. Same four colours across all three.
+
+### Skeleton — 6 variants (Text / Avatar / Card / List / Table / Form)
+Flat grey blocks at `radius/sm`, with the last line of any text run cut short.
+No shimmer is shown in the file.
+
+### Form — 4 variants (Single column / Two column × with/without header)
+Single column is a `radius/xl` card on the page surface; two column drops the
+card. Required fields carry a red asterisk after the label. Helper text sits
+under the field, the character counter under the textarea, right-aligned.
+Footer is Cancel (outline) + Save Changes (primary), left-aligned in the single
+column and under the grid in the two column.
+
+### Empty States
+Icon in a tinted circle, title, one line of body, then one or two buttons
+(primary, optionally with an outline beside it). Fifteen written cases — no
+data, no results, all caught up, inbox empty, no files, no projects, connection
+lost, access denied, something went wrong, empty cart, no team members, welcome
+aboard. Destructive cases (connection lost, access denied, error) use the error
+tint for the icon; the rest use primary. **The page includes Arabic RTL
+versions of the same states**, which is the only place in the file where a
+pattern is drawn in both languages.
+
+### Icons — 96 Lucide icons across 11 categories
+Files · Essential · Text · Menu · Shop · Like · Security · Messages · Arrows ·
+Users · Money · Multimedia · Location · Time. Use `lucide-react`; do not mix in
+a second icon set.
+
+### Not in the file at all
+**Auth screens** and **Dashboard** are listed in the capture README but appear
+in neither the screenshots nor the PDF.
 
 ---
 
@@ -316,20 +377,23 @@ Select all flip.
 
 ## 10. Gaps and defects in the source
 
-Ranked by how much they block the build.
+Ranked by how much they block the build. Re-checked against the full PDF on
+2026-10-16 — the first four survived it.
 
-1. **The navigation page is missing** — file 18 is a second copy of tooltip. Top
-   nav, sidebar and mobile nav are all unseen, and nav is needed on day one.
-2. **No elevation values.** Eight named levels, zero numbers.
-3. **No semantic colour layer.** Layer 2 is the layer components are supposed to
-   read, and it is not in any capture.
+1. **The navigation page is still missing.** Screenshot and PDF both show the
+   Tooltip frame under the "Navigation Bar" heading. Sidebar, top nav and
+   mobile nav are all unseen. This is the only gap that blocks a page.
+2. **No elevation values.** Eight named levels, zero numbers, in either export.
+3. **No semantic colour layer.** Layer 2 is the layer components are supposed
+   to read, and it is in neither export.
 4. **Grid column widths are arithmetically wrong** at all three breakpoints.
-5. **No component dimensions anywhere** — button heights, input heights, paddings
-   and per-size radii are all absent from the captures.
-6. The Figma page for tabs is titled "Taps".
-7. Cover and Getting Started disagree on the component count (34 vs 20+).
-
----
+5. **Auth screens and Dashboard do not exist** in the file, though the capture
+   README lists them.
+6. **No component dimensions anywhere** — button heights, input heights,
+   paddings and per-size radii are absent.
+7. No shimmer or motion spec for Skeleton or Spinner; both are drawn static.
+8. The Figma page for tabs is titled "Taps".
+9. Cover and Getting Started disagree on the component count (34 vs 20+).
 
 ## 11. How this meets the live site
 

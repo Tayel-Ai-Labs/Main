@@ -18,7 +18,7 @@ export function Clients() {
           named owner on the other side.
         </p>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(320px,1fr))]">
           {clients.map((client) => (
             <article
               key={client.slug}

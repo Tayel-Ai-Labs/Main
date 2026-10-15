@@ -62,6 +62,66 @@ export const products: Product[] = [
   },
 ];
 
+export type Model = {
+  slug: string;
+  name: string;
+  /** What it is, in one line. No marketing. */
+  blurb: string;
+  /** The one thing that makes it not a demo. */
+  note: string;
+  status: "live" | "in-build" | "planned";
+  url: string | null;
+  tags: string[];
+};
+
+/**
+ * Models — what the lab has actually built, sitting next to the four core
+ * products. A product is a platform we are opening; a model is a system we
+ * shipped for a named problem.
+ */
+export const models: Model[] = [
+  {
+    slug: "robopilot",
+    name: "RoboPilot AI",
+    blurb:
+      "A project engineering copilot for robotics and embedded work: it proposes the architecture, names the components, and prices the build.",
+    note:
+      "The AI proposes architecture and assumptions only. Every price, compatibility check and risk score comes from deterministic code against an approved catalog — never a guessed number.",
+    status: "live",
+    url: "https://robo-pilot-ai-backend.vercel.app",
+    tags: ["Robotics", "Embedded", "Next.js", "Deterministic pricing"],
+  },
+  {
+    slug: "egypt-baccalaureate",
+    name: "Egypt Baccalaureate AI",
+    blurb:
+      "A study platform for the new Egyptian Baccalaureate — an AI tutor that answers in Arabic and an exam generator built on the real curriculum.",
+    note:
+      "Arabic-first, RTL, streaming. The curriculum is verified against the Ministry's own documents rather than scraped.",
+    status: "in-build",
+    url: null,
+    tags: ["Education", "Arabic RTL", "FastAPI", "AI tutor"],
+  },
+  {
+    slug: "visual-scream",
+    name: "Visual Scream AI",
+    blurb: "TODO — one line from the owner on what it is and who it is for.",
+    note: "TODO",
+    status: "in-build", // TODO: confirm
+    url: null,
+    tags: [], // TODO
+  },
+  {
+    slug: "ezzat-physics",
+    name: "Ezzat Physics AI",
+    blurb: "TODO — one line from the owner on what it is and who it is for.",
+    note: "TODO",
+    status: "in-build", // TODO: confirm
+    url: null,
+    tags: [], // TODO
+  },
+];
+
 export type Client = {
   slug: string;
   name: string;
@@ -84,25 +144,8 @@ export const clients: Client[] = [
     url: null, // TODO: confirm the public URL before launch
     work: ["QR menu", "Bilingual AR/EN", "Zero-dependency build", "Auto price sync"],
   },
-  {
-    slug: "ezzat-physics-ai",
-    name: "Ezzat Physics AI",
-    sector: "Education", // TODO: confirm
-    summary:
-      "TODO — one sentence from the owner on what we built and who it serves.",
-    url: null,
-    work: [], // TODO
-  },
-  {
-    slug: "visual-scream-ai",
-    name: "Visual Scream AI",
-    sector: "Creative", // TODO: confirm
-    summary:
-      "TODO — one sentence from the owner on what we built and who it serves.",
-    url: null,
-    work: [], // TODO
-  },
 ];
+
 
 export const focusAreas = [
   {

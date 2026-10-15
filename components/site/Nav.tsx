@@ -20,6 +20,7 @@ import { Logo } from "@/components/site/Logo";
 const links = [
   { href: "/", label: "Home" },
   { href: "/#products", label: "Products" },
+  { href: "/#models", label: "Models" },
   { href: "/#clients", label: "Clients" },
   { href: "/#who-we-are", label: "About" },
   { href: "/contact", label: "Contact" },

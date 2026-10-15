@@ -34,8 +34,31 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: site.name,
+  metadataBase: new URL("https://tayel.net"),
+  title: {
+    default: site.name,
+    template: `%s | ${site.name}`,
+  },
   description: site.tagline,
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: site.name,
+    description: site.tagline,
+    locale: "en",
+  },
+  twitter: { card: "summary_large_image" },
+};
+
+/** Organization record, so search and link previews name the lab correctly. */
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: "https://tayel.net",
+  email: site.email,
+  telephone: site.phones,
+  sameAs: Object.values(site.social),
 };
 
 /** Applies the stored theme before first paint so dark mode never flashes. */
@@ -60,10 +83,20 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </head>
       <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-100 focus:rounded-lg focus:bg-action focus:px-4 focus:py-2 focus:text-label-md focus:text-ink-inverse"
+        >
+          Skip to content
+        </a>
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>
