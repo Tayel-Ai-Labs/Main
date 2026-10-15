@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `Contact | ${site.name}`,
+  title: "Contact",
   description: `Get in touch with ${site.name}.`,
 };
 
